@@ -7,10 +7,20 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 }
 
-#Logic App which creates workspaces based on a given 
+resource "azurerm_container_registry" "cr" {
+  name                     = "cloudruler"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  sku                      = "Basic"
+}
 
-resource "azurerm_logic_app_workflow" "terraform_init_workspace" {
-  name                = "logic-tfc-init-workspace"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+resource "azurerm_storage_account" "st" {
+  name                     = "cloudruler"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_kind             = "StorageV2"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  access_tier              = "Cool"
+  min_tls_version          = "TLS1_2"
 }
