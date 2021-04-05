@@ -90,7 +90,7 @@ resource "azuredevops_git_repository" "connectivity" {
   }
 }
 
-resource "azuredevops_git_repository" "aks-engine" {
+resource "azuredevops_git_repository" "aks_engine" {
   project_id = azuredevops_project.infrastructure.id
   name       = "aks-engine"
   initialization {
@@ -125,6 +125,38 @@ resource "azuredevops_git_repository" "devcontainers" {
 resource "azuredevops_git_repository" "pipelines" {
   project_id = azuredevops_project.devops.id
   name       = "pipelines"
+  initialization {
+    init_type = "Clean"
+  }
+}
+
+resource "azuredevops_project" "dev" {
+  name       = "dev"
+  description        = "Sandbox for practicing coding"
+  visibility         = "private"
+  version_control    = "Git"
+  work_item_template = "Basic"
+
+  features = {
+      boards    = "enabled"
+      repositories = "enabled"
+      pipelines = "enabled"
+      testplans = "enabled"
+      artifacts = "enabled"
+  }
+}
+
+resource "azuredevops_git_repository" "dev" {
+  project_id = azuredevops_project.dev.id
+  name       = "dev"
+  initialization {
+    init_type = "Clean"
+  }
+}
+
+resource "azuredevops_git_repository" "python" {
+  project_id = azuredevops_project.dev.id
+  name       = "python"
   initialization {
     init_type = "Clean"
   }
