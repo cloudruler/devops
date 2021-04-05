@@ -26,3 +26,10 @@ terraform import azuredevops_git_repository.aks_engine infrastructure/b579a0c5-5
 
 terraform import azuredevops_git_repository.dev dev/08f48237-74d5-431f-b72e-49e50322240f
 terraform import azuredevops_git_repository.python dev/f635e791-8015-419b-9771-65d0dad28dbe
+
+
+terraform import azuredevops_serviceendpoint_azurecr.cloudruler devops/7645cda1-1c3f-4c85-aabd-2a66d08a6c4b
+
+
+
+terraform import azuredevops_serviceendpoint_azurerm.infrastructure infrastructure/6c673354-dc3e-48b1-9bb7-75e2fa5279fa

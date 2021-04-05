@@ -1,4 +1,4 @@
-# output "appcs_id" {
+# output "devops_azurecr_service_principal_id" {
 #   value = azurerm_app_configuration.appcs.id
 # }
 

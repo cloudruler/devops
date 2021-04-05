@@ -2,6 +2,21 @@ provider "azuredevops" {
   org_service_url = "https://dev.azure.com/cloudruler"
 }
 
+locals {
+  tenant_id = "c17f8a71-76c6-4e70-bd08-fb10ead2bf68"
+  subscription_id = "2fb80bcc-8430-4b66-868b-8253e48a8317"
+}
+
+data "azurerm_key_vault" "cloudruler" {
+  name                = "cloudruler"
+  resource_group_name = "rg-identity"
+}
+
+data "azurerm_key_vault_secret" "arm_connector_sp" {
+  name         = "infrastructure-automation-arm-connector-secret"
+  key_vault_id = data.azurerm_key_vault.cloudruler.id
+}
+
 resource "azuredevops_project" "infrastructure" {
   name       = "infrastructure"
   description        = "Provisions all infrastructure, projects, repositories, etc."
@@ -15,6 +30,19 @@ resource "azuredevops_project" "infrastructure" {
       pipelines = "enabled"
       testplans = "enabled"
       artifacts = "enabled"
+  }
+}
+
+resource "azuredevops_serviceendpoint_azurerm" "infrastructure" {
+  project_id                = azuredevops_project.infrastructure.id
+  service_endpoint_name     = "cloudruler"
+  description               = "Cloud Ruler subscription" 
+  azurerm_spn_tenantid      = local.tenant_id
+  azurerm_subscription_id   = local.subscription_id
+  azurerm_subscription_name = "cloudruler"
+  credentials {
+    serviceprincipalid = "1e3fd996-8372-4ce4-8cbc-9406340e495b"
+    serviceprincipalkey = data.azurerm_key_vault_secret.arm_connector_sp.value
   }
 }
 
@@ -160,4 +188,15 @@ resource "azuredevops_git_repository" "python" {
   initialization {
     init_type = "Clean"
   }
+}
+
+resource "azuredevops_serviceendpoint_azurecr" "cloudruler" {
+  project_id             = azuredevops_project.devops.id
+  service_endpoint_name  = "cloudruler.azurecr.io"
+  description = "Cloud Ruler container registry"
+  resource_group            = "rg-devops"
+  azurecr_spn_tenantid      = local.tenant_id
+  azurecr_name              = "cloudruler"
+  azurecr_subscription_id   = local.subscription_id
+  azurecr_subscription_name = "cloudruler"
 }
