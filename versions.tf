@@ -4,6 +4,11 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">= 2.49"
     }
+
+    azuredevops = {
+      source = "microsoft/azuredevops"
+      version = ">=0.1.0"
+    }
   }
   backend "azurerm" {
     resource_group_name   = "rg-identity"
