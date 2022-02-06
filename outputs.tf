@@ -1,5 +1,5 @@
 output "devops_azurecr_service_principal_id" {
-  value = azuredevops_serviceendpoint_azurecr.cloudruler.service_principal_id
+  value = azuredevops_serviceendpoint_dockerregistry.cloudruler.docker_username
 }
 
 # output "appcs_endpoint" {
