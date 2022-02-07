@@ -120,3 +120,11 @@ resource "azuredevops_git_repository" "aks_engine" {
     init_type = "Clean"
   }
 }
+
+resource "azuredevops_git_repository" "images" {
+  project_id = azuredevops_project.infrastructure.id
+  name       = "images"
+  initialization {
+    init_type = "Clean"
+  }
+}
