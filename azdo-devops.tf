@@ -18,6 +18,7 @@ resource "azuredevops_project" "devops" {
 resource "azuredevops_git_repository" "devcontainers" {
   project_id = azuredevops_project.devops.id
   name       = "devcontainers"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -26,6 +27,7 @@ resource "azuredevops_git_repository" "devcontainers" {
 resource "azuredevops_git_repository" "pipelines" {
   project_id = azuredevops_project.devops.id
   name       = "pipelines"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }

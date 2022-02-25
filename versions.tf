@@ -9,6 +9,11 @@ terraform {
       source  = "microsoft/azuredevops"
       version = ">=0.1.0"
     }
+
+    github = {
+      source = "integrations/github"
+      version = "4.20.0"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "rg-identity"
@@ -17,4 +22,12 @@ terraform {
     key                  = "devops.tfstate"
   }
   required_version = ">= 0.14.7"
+}
+
+provider "github" {
+  owner = var.github_organization
+}
+
+provider "azurerm" {
+  features {}
 }

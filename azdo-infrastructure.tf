@@ -44,6 +44,7 @@ resource "azuredevops_serviceendpoint_generic" "terraform_cloud" {
 resource "azuredevops_git_repository" "initialization" {
   project_id = azuredevops_project.infrastructure.id
   name       = "initialization"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -52,6 +53,7 @@ resource "azuredevops_git_repository" "initialization" {
 resource "azuredevops_git_repository" "management" {
   project_id = azuredevops_project.infrastructure.id
   name       = "management"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -60,6 +62,7 @@ resource "azuredevops_git_repository" "management" {
 resource "azuredevops_git_repository" "infrastructure" {
   project_id = azuredevops_project.infrastructure.id
   name       = "infrastructure"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -68,6 +71,7 @@ resource "azuredevops_git_repository" "infrastructure" {
 resource "azuredevops_git_repository" "scripts" {
   project_id = azuredevops_project.infrastructure.id
   name       = "scripts"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -76,6 +80,7 @@ resource "azuredevops_git_repository" "scripts" {
 resource "azuredevops_git_repository" "sandbox" {
   project_id = azuredevops_project.infrastructure.id
   name       = "sandbox"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -84,6 +89,7 @@ resource "azuredevops_git_repository" "sandbox" {
 resource "azuredevops_git_repository" "terraform-cloudruler-common" {
   project_id = azuredevops_project.infrastructure.id
   name       = "terraform-cloudruler-common"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -92,6 +98,7 @@ resource "azuredevops_git_repository" "terraform-cloudruler-common" {
 resource "azuredevops_git_repository" "identity" {
   project_id = azuredevops_project.infrastructure.id
   name       = "identity"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -100,6 +107,7 @@ resource "azuredevops_git_repository" "identity" {
 resource "azuredevops_git_repository" "devops" {
   project_id = azuredevops_project.infrastructure.id
   name       = "devops"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -108,6 +116,7 @@ resource "azuredevops_git_repository" "devops" {
 resource "azuredevops_git_repository" "connectivity" {
   project_id = azuredevops_project.infrastructure.id
   name       = "connectivity"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -116,6 +125,7 @@ resource "azuredevops_git_repository" "connectivity" {
 resource "azuredevops_git_repository" "aks_engine" {
   project_id = azuredevops_project.infrastructure.id
   name       = "aks-engine"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
@@ -124,6 +134,7 @@ resource "azuredevops_git_repository" "aks_engine" {
 resource "azuredevops_git_repository" "images" {
   project_id = azuredevops_project.infrastructure.id
   name       = "images"
+  default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
   }
