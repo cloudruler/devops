@@ -9,10 +9,13 @@ terraform {
       source  = "microsoft/azuredevops"
       version = ">=0.1.0"
     }
-
     github = {
       source = "integrations/github"
       version = "4.20.0"
+    }
+    tfe = {
+      source = "hashicorp/tfe"
+      version = "0.28.1"
     }
   }
   backend "azurerm" {
@@ -30,4 +33,7 @@ provider "github" {
 
 provider "azurerm" {
   features {}
+}
+
+provider "tfe" {
 }

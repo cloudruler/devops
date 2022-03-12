@@ -13,7 +13,7 @@ data "azurerm_key_vault" "cloudruler" {
 }
 
 data "azurerm_key_vault_secret" "arm_connector_sp" {
-  name         = "infrastructure-automation-arm-connector-secret"
+  name         = "vault-automation-secret"
   key_vault_id = data.azurerm_key_vault.cloudruler.id
 }
 
