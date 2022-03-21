@@ -17,6 +17,10 @@ terraform {
       source = "hashicorp/tfe"
       version = "0.28.1"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.1.0"
+    }
   }
   backend "azurerm" {
     resource_group_name  = "rg-identity"
@@ -36,4 +40,6 @@ provider "azurerm" {
 }
 
 provider "tfe" {
+}
+provider "random" {
 }
