@@ -13,6 +13,9 @@ resource "azuredevops_project" "devops" {
     testplans    = "enabled"
     artifacts    = "enabled"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "devcontainers" {
@@ -22,6 +25,9 @@ resource "azuredevops_git_repository" "devcontainers" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "pipelines" {
@@ -30,6 +36,9 @@ resource "azuredevops_git_repository" "pipelines" {
   default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
 

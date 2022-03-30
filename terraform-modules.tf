@@ -7,6 +7,9 @@ resource "github_repository" "terraform_azurerm_aks_cluster" {
     owner      = split("/", github_repository.terraform_module_repo_template.full_name)[0]
     repository = github_repository.terraform_module_repo_template.name
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "tfe_registry_module" "module-terraform_azurerm_aks_cluster" {

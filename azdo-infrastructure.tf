@@ -13,6 +13,9 @@ resource "azuredevops_project" "infrastructure" {
     testplans    = "enabled"
     artifacts    = "enabled"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_serviceendpoint_azurerm" "infrastructure" {
@@ -48,6 +51,9 @@ resource "azuredevops_git_repository" "initialization" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "management" {
@@ -56,6 +62,9 @@ resource "azuredevops_git_repository" "management" {
   default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
 
@@ -66,6 +75,9 @@ resource "azuredevops_git_repository" "infrastructure" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "scripts" {
@@ -74,6 +86,9 @@ resource "azuredevops_git_repository" "scripts" {
   default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
 
@@ -84,14 +99,8 @@ resource "azuredevops_git_repository" "sandbox" {
   initialization {
     init_type = "Clean"
   }
-}
-
-resource "azuredevops_git_repository" "terraform-cloudruler-common" {
-  project_id = azuredevops_project.infrastructure.id
-  name       = "terraform-cloudruler-common"
-  default_branch = "refs/heads/main"
-  initialization {
-    init_type = "Clean"
+  lifecycle {
+    prevent_destroy = true
   }
 }
 
@@ -102,6 +111,9 @@ resource "azuredevops_git_repository" "identity" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "devops" {
@@ -110,6 +122,9 @@ resource "azuredevops_git_repository" "devops" {
   default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
 
@@ -120,6 +135,9 @@ resource "azuredevops_git_repository" "connectivity" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "aks_engine" {
@@ -129,6 +147,9 @@ resource "azuredevops_git_repository" "aks_engine" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "images" {
@@ -137,5 +158,8 @@ resource "azuredevops_git_repository" "images" {
   default_branch = "refs/heads/main"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }

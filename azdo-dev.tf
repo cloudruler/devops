@@ -13,6 +13,9 @@ resource "azuredevops_project" "dev" {
     testplans    = "enabled"
     artifacts    = "enabled"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "dev" {
@@ -20,6 +23,9 @@ resource "azuredevops_git_repository" "dev" {
   name       = "dev"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
 
@@ -29,6 +35,9 @@ resource "azuredevops_git_repository" "python" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "dotnet" {
@@ -37,6 +46,9 @@ resource "azuredevops_git_repository" "dotnet" {
   initialization {
     init_type = "Clean"
   }
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azuredevops_git_repository" "java" {
@@ -44,5 +56,8 @@ resource "azuredevops_git_repository" "java" {
   name       = "java"
   initialization {
     init_type = "Clean"
+  }
+  lifecycle {
+    prevent_destroy = true
   }
 }
