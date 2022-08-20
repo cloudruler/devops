@@ -89,3 +89,11 @@ resource "github_repository" "aws-sandbox" {
     prevent_destroy = true
   }
 }
+
+resource "github_repository" "slido" {
+  name        = "slido"
+  description = "Code for working with slido"
+  lifecycle {
+    prevent_destroy = true
+  }
+}
