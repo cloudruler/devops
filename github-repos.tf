@@ -1,5 +1,5 @@
 data "github_organization" "org" {
-    name = var.github_organization
+  name = var.github_organization
 }
 
 resource "github_repository" "initialization" {

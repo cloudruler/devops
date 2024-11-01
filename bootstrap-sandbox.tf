@@ -7,7 +7,9 @@ resource "github_repository" "sandbox" {
 }
 
 resource "tfe_workspace" "sandbox" {
-  name           = github_repository.sandbox.name
-  organization   = tfe_organization.cloudruler.name
-  description    = github_repository.sandbox.description
+  name              = github_repository.sandbox.name
+  organization      = tfe_organization.cloudruler.name
+  description       = github_repository.sandbox.description
+  terraform_version = var.terraform_version
+  execution_mode    = "local"
 }

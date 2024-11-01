@@ -1,6 +1,6 @@
 resource "tfe_organization" "cloudruler" {
-  name  = "cloudruler"
-  email = "brianmoore@cloudruler.com"
+  name                     = "cloudruler"
+  email                    = "brianmoore@cloudruler.com"
   collaborator_auth_policy = "two_factor_mandatory"
 }
 

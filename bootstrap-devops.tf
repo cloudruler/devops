@@ -7,7 +7,8 @@ resource "github_repository" "devops" {
 }
 
 resource "tfe_workspace" "devops" {
-  name           = github_repository.devops.name
-  organization   = tfe_organization.cloudruler.name
-  description    = github_repository.devops.description
+  name              = github_repository.devops.name
+  organization      = tfe_organization.cloudruler.name
+  description       = github_repository.devops.description
+  terraform_version = var.terraform_version
 }

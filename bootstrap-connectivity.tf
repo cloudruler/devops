@@ -7,7 +7,8 @@ resource "github_repository" "connectivity" {
 }
 
 resource "tfe_workspace" "connectivity" {
-  name           = github_repository.connectivity.name
-  organization   = tfe_organization.cloudruler.name
-  description    = github_repository.connectivity.description
+  name              = github_repository.connectivity.name
+  organization      = tfe_organization.cloudruler.name
+  description       = github_repository.connectivity.description
+  terraform_version = var.terraform_version
 }

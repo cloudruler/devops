@@ -5,3 +5,7 @@ variable "location" {
 variable "github_organization" {
   type = string
 }
+
+variable "terraform_version" {
+  type = string
+}
